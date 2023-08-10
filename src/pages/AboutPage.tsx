@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import aboutText from "../js/aboutText";
+import aboutText, { AboutText } from "../js/aboutText"; // Import AboutText interface
 
 import deathstarwallpaper from "../assets/images/deathstarwallpaper.jpg";
 import Footer from "../components/footer/Footer";
@@ -34,7 +34,6 @@ const MainContainer = styled.main`
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   border: 1px solid rgba(255, 255, 255, 0.18);
   min-height: calc(100vh - 120px - 40px);
-  @import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
   font-family: "Michroma", sans-serif;
 `;
 
@@ -78,11 +77,11 @@ const StyledFooter = styled.footer`
   width: 100%;
 `;
 
-const AboutPage = () => {
-  const [locale, setLocale] = useState("en");
-  const text = aboutText[locale];
+const AboutPage: React.FC = () => {
+  const [locale, setLocale] = useState<"en" | "pl">("en"); // Specify the type
+  const text: AboutText = aboutText[locale];
 
-  const changeLanguage = (lng) => {
+  const changeLanguage = (lng: "en" | "pl") => {
     setLocale(lng);
   };
 

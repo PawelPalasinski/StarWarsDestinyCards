@@ -36,7 +36,11 @@ const SearchContainer = styled.div`
   align-items: center;
 `;
 
-const ToggleButton = styled.button`
+interface ToggleButtonProps {
+  showFilters: boolean;
+}
+
+const ToggleButton = styled.button<ToggleButtonProps>`
   padding: 0.5rem 1rem;
   background-color: ${(props) => (props.showFilters ? "#ff0000" : "#FFD700")};
   color: #fff;
@@ -54,7 +58,7 @@ const StyledFooter = styled.footer`
 
 import useUserStore from "../store/userStore";
 
-const CardsPage = () => {
+const CardsPage: React.FC = () => {
   const [showFilters, setShowFilters] = useState(false);
   const [refresh, setRefresh] = useState(false);
 
@@ -63,7 +67,11 @@ const CardsPage = () => {
     (state) => state.handleAddOrRemoveFromCollection
   );
 
-  const handleCardClick = (cardCode, cardImage, cardName) => {
+  const handleCardClick = (
+    cardCode: string,
+    cardImage: string,
+    cardName: string
+  ) => {
     if (loggedInUser) {
       handleAddOrRemoveFromCollection(
         loggedInUser.login,

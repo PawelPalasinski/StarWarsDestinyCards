@@ -1,4 +1,19 @@
-const aboutText = {
+const aboutText: {
+  en: {
+    about: {
+      title: string;
+      paragraph1: string;
+      paragraph2: string;
+    };
+  };
+  pl: {
+    about: {
+      title: string;
+      paragraph1: string;
+      paragraph2: string;
+    };
+  };
+} = {
   en: {
     about: {
       title: "Why I created this application",
